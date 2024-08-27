@@ -1,2 +1,5 @@
 ---
-# defaults file for c
+c_fastfetch_ppa: "ppa:zhangsongcui3371/fastfetch"
+c_fastfetch_gpg_key_url: "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xEB65EE19D802F3EB1A13CFE47E2E5CB4D4865F21"
+c_fastfetch_repo_file: "fastfetch.list"
+c_fastfetch_package: "fastfetch"

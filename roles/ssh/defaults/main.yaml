@@ -1,2 +1,6 @@
 ---
-# defaults file for ssh
+ssh_arch: "openssh"
+ssh_fedora: "openssh-server"
+ssh_suse: "openssh"
+ssh_ubuntu: "openssh-server"
+ssh_debian: "openssh-server"

@@ -1,0 +1,3 @@
+# https://serverfault.com/questions/587727/how-to-unify-package-installation-tasks-in-ansible
+---
+fastfetch_package_name: fastfetch

@@ -1,0 +1,20 @@
+---
+- name: Add Fastfetch GPG key
+  ansible.builtin.apt_key:
+    url: "{{ fastfetch_gpg_key_url }}"
+    state: present
+
+- name: Add Fastfetch PPA repository
+  ansible.builtin.apt_repository:
+    repo: "deb http://ppa.launchpad.net/{{ fastfetch_ppa }}/ubuntu {{ ansible_distribution_release }} main"
+    state: present
+    filename: "{{ fastfetch_repo_file }}"
+
+- name: Update the apt cache
+  ansible.builtin.apt:
+    update_cache: true
+
+- name: Install Fastfetch package
+  ansible.builtin.apt:
+    name: "{{ fastfetch_package }}"
+    state: present

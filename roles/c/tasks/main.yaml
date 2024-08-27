@@ -1,2 +1,2 @@
 ---
-# tasks file for c
+- ansible.builtin.import_playbook: fastfetch.yaml
