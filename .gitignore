@@ -1,1 +1,3 @@
 *.retry
+.python-version
+uv.lock
