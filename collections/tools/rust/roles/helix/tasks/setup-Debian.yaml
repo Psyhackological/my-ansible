@@ -1,0 +1,14 @@
+---
+- name: Add Helix PPA repository
+  ansible.builtin.apt_repository:
+    repo: "{{ helix_ppa_repo }}"
+    state: present
+
+- name: Update apt package cache
+  ansible.builtin.apt:
+    update_cache: true
+
+- name: Install Helix editor
+  ansible.builtin.apt:
+    name: "{{ helix_package_name }}"
+    state: present

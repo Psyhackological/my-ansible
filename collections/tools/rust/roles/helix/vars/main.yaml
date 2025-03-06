@@ -1,3 +1,2 @@
-#SPDX-License-Identifier: MIT-0
 ---
-# vars file for helix
+helix_ppa_repo: ppa:maveonair/helix-editor

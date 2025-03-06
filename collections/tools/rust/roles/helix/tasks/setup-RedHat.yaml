@@ -1,0 +1,5 @@
+---
+- name: Install Helix editor
+  ansible.builtin.dnf:
+    name: "{{ helix_package_name }}"
+    state: present

@@ -1,0 +1,5 @@
+---
+- name: Install Helix editor
+  community.general.pacman:
+    name: "{{ helix_package_name }}"
+    state: present
