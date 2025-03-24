@@ -1,0 +1,20 @@
+---
+- name: Verify Helix installation
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Check if Helix editor is installed and executable
+      ansible.builtin.command: which hx
+      register: helix_check
+      failed_when: helix_check.rc != 0
+
+    - name: Validate Helix binary execution
+      ansible.builtin.command: helix --version
+      register: helix_version
+      changed_when: false
+
+    - name: Display Helix version
+      ansible.builtin.debug:
+        msg: "{{ helix_version.stdout }}"
+

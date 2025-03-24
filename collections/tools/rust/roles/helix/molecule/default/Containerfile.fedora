@@ -1,0 +1,4 @@
+FROM fedora:latest
+RUN dnf install -y python3 sudo && \
+    dnf clean all
+

@@ -1,8 +1,22 @@
 ---
+dependency:
+  name: galaxy
+
 driver:
-  name: default
+  name: podman
+
 platforms:
-  - name: instance
-    # you might want to add your own variables here based on what provisioning
-    # you are doing like:
-    # image: quay.io/centos/centos:stream8
+  - name: molecule-debian
+    image: molecule-debian-python:latest
+  - name: molecule-ubuntu
+    image: molecule-ubuntu-python:latest
+  - name: molecule-fedora
+    image: molecule-fedora-python:latest
+  - name: molecule-archlinux
+    image: molecule-arch-python:latest
+
+provisioner:
+  name: ansible
+verifier:
+  name: ansible
+
