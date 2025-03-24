@@ -1,0 +1,7 @@
+---
+- name: Install Rust packages using include_tasks loop
+  ansible.builtin.include_tasks: install_package.yml
+  loop: "{{ rust_packages }}"
+  loop_control:
+    loop_var: package
+  ignore_errors: true

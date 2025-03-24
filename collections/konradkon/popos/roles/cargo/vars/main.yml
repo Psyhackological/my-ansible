@@ -1,0 +1,5 @@
+---
+rust_packages:
+  - navi
+  - ludusavi
+  - ripgrep
