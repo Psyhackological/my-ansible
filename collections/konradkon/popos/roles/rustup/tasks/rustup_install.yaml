@@ -1,0 +1,32 @@
+---
+- name: Check if Rust binaries exist
+  ansible.builtin.stat:
+    path: "{{ rustup_prefix_path }}/{{ item }}"
+  loop: "{{ rustup_rust_binaries }}"
+  register: rust_binaries_stat
+
+- name: Determine if Rust installation is required
+  ansible.builtin.set_fact:
+    rust_install_required: "{{ rust_binaries_stat.results | selectattr('stat.exists', 'equalto', false) | list | length > 0 }}"
+
+- name: Download rustup installation script
+  ansible.builtin.get_url:
+    url: "{{ rustup_script_url }}"
+    dest: "{{ rustup_script_local_path }}"
+    mode: '0755'
+  when: rust_install_required
+
+- name: Install Rust using rustup script
+  ansible.builtin.command: "{{ rustup_script_local_path }} -y"
+  args:
+    creates: "{{ rustup_prefix_path }}/rustc"
+  environment:
+    CARGO_HOME: "{{ rustup_cargo_home }}"
+    RUSTUP_HOME: "{{ rustup_home }}"
+  when: rust_install_required
+
+- name: Remove rustup installation script
+  ansible.builtin.file:
+    path: "{{ rustup_script_local_path }}"
+    state: absent
+  when: rust_install_required

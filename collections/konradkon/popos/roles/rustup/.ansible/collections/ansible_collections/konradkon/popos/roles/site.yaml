@@ -1,0 +1,6 @@
+---
+- name: Install Rust packages using cargo_install role
+  hosts: localhost
+  become: false
+  roles:
+    - rustup

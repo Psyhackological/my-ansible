@@ -1,10 +1,4 @@
 ---
-- name: Gather only ansible_env.HOME fact
-  ansible.builtin.setup:
-    filter:
-      - '!all'
-      - 'ansible_env.HOME'
-
 - name: Install rustup to have cargo, rustc and all toolchain for cargo install
   ansible.builtin.include_tasks: rustup_install.yaml
 

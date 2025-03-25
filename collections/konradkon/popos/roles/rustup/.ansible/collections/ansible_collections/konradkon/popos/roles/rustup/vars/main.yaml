@@ -3,7 +3,3 @@ rust_packages:
   - navi
   - ludusavi
   - ripgrep
-  - fd-find
-  - zellij
-  - starship
-  - alacritty
