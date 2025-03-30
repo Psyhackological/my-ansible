@@ -1,3 +1,17 @@
-#SPDX-License-Identifier: MIT-0
 ---
-# vars file for uv
+uv_tool_list:
+  - ansible-core
+  - ansible-lint
+  - marimo
+  - maturin
+  - molecule
+  - mypy
+  - notebook
+  - openai-whisper
+  - pylint
+  - python-lsp-server
+  - ruff
+  - tidal-dl
+  - virtualenv
+  - yamllint
+  - yt-dlp
