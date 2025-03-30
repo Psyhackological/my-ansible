@@ -1,3 +1,18 @@
-#SPDX-License-Identifier: MIT-0
 ---
-# vars file for flatpak
+flatpak_list:
+  - com.github.qarmin.czkawka
+  - com.github.tchx84.Flatseal
+  - com.heroicgameslauncher.hgl
+  - com.logseq.Logseq
+  - com.usebottles.bottles
+  - io.gitlab.liferooter.TextPieces
+  - io.gitlab.news_flash.NewsFlash
+  - md.obsidian.Obsidian
+  - org.blender.Blender
+  - org.gaphor.Gaphor
+  - org.gimp.GIMP
+  - org.gnome.gitlab.YaLTeR.VideoTrimmer
+  - org.inkscape.Inkscape
+  - org.qbittorrent.qBittorrent
+  - rs.ruffle.Ruffle
+  - space.gaiasky.GaiaSky
