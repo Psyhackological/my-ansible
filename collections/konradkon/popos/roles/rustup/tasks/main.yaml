@@ -10,7 +10,7 @@
 
 - name: Install Rust packages using include_tasks loop
   ansible.builtin.include_tasks: cargo_install_package.yaml
-  loop: "{{ rust_packages }}"
+  loop: "{{ rustup_cargo_list }}"
   loop_control:
     loop_var: package
   ignore_errors: true
