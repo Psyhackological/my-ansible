@@ -1,3 +1,4 @@
-#SPDX-License-Identifier: MIT-0
 ---
-# vars file for brew
+brew_list:
+  - gradle
+  - lua-language-server
