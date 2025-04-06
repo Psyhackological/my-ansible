@@ -1,4 +1,6 @@
 ---
+brew_install_script_url: 'https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh'
+brew_installation_path: "/home/{{ ansible_user }}/.local/bin/"
 brew_list:
   - gradle
   - lua-language-server

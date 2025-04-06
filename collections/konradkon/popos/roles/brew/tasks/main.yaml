@@ -1,3 +1,9 @@
-#SPDX-License-Identifier: MIT-0
 ---
-# tasks file for brew
+- name: Install desired homebrew packages
+  community.general.homebrew:
+    name: "{{ brew_list }}"
+
+- name: Update homebrew and upgrade all packages
+  community.general.homebrew:
+    update_homebrew: true
+    upgrade_all: true
