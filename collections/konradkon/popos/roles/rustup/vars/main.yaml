@@ -1,66 +1,69 @@
 ---
 rustup_cargo_list:
-  - alacritty
-  - atac
-  - bacon
-  - bat
-  - bottom
-  - cargo-asm
-  - cargo-binstall
-  - cargo-deny
-  - cargo-nextest
-  - cargo-sweep
-  - cargo-tarpaulin
-  - code2prompt
-  - codeberg-cli
-  - codesnap-cli
-  - coreutils
-  - cyme
-  - difftastic
-  - dotter
-  - dua-cli
-  - fd-find
-  - flamegraph
-  - gitui
-  - grex
-  - httm
-  - hyperfine
-  - jaq
-  - jj-cli
-  - just
-  - kondo
-  - ludusavi
-  - lychee
-  - mdbook
-  - mdcat
-  - monolith
-  - mprocs
-  - navi
-  - netscanner
-  - nomino
-  - oculante
-  - onefetch
-  - oxker
-  - pastel
-  - presenterm
-  - rainfrog
-  - repgrep
-  - ripgrep
-  - rusti-cal
-  - rustypipe-cli
-  - sqlx-cli
-  - starship
-  - tabiew
-  - taplo-cli
-  - tealdeer
-  - television
-  - termusic-server
-  - tokei
-  - typos-cli
-  - typst-cli
-  - wild-linker
-  - xan
-  - yazi-cli
-  - yazi-fm
-  - zellij
-  - zoxide
+  - name: alacritty
+  - name: atac
+  - name: bacon
+  - name: bat
+  - name: bottom
+  - name: cargo-asm
+  - name: cargo-binstall
+  - name: cargo-deny
+  - name: cargo-nextest
+  - name: cargo-sweep
+  - name: cargo-tarpaulin
+  - name: code2prompt
+  - name: codeberg-cli
+  - name: codesnap-cli
+  - name: coreutils
+  - name: cyme
+  - name: difftastic
+  - name: dotter
+  - name: dua-cli
+  - name: fd-find
+  - name: flamegraph
+  - name: gitui
+  - name: grex
+  - name: httm
+  - name: hyperfine
+  - name: jaq
+  - name: jj-cli
+  - name: just
+  - name: kondo
+  - name: ludusavi
+  - name: lychee
+  - name: mdbook
+  - name: mdcat
+  - name: monolith
+  - name: mprocs
+  - name: navi
+  - name: netscanner
+  - name: nomino
+  - name: oculante
+  - name: onefetch
+  - name: oxker
+  - name: pastel
+  - name: presenterm
+  - name: rainfrog
+  - name: repgrep
+  - name: ripgrep
+  - name: rusti-cal
+  - name: rustypipe-cli
+  - name: sqlx-cli
+  - name: starship
+  - name: tabiew
+  - name: taplo-cli
+  - name: tealdeer
+  - name: television
+  - name: termusic-server
+    dependencies:
+      - protobuf-compiler
+      - libasound2-dev
+  - name: tokei
+  - name: typos-cli
+  - name: typst-cli
+  - name: wild-linker
+  - name: xan
+  - name: yazi-cli
+  - name: yazi-fm
+  - name: zellij
+  - name: zoxide

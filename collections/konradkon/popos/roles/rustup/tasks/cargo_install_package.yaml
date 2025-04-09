@@ -1,12 +1,21 @@
 ---
-- name: Install Rust package with fallback to locked
+- name: Install additional system dependencies for {{ package.name }}
+  ansible.builtin.apt:
+    name: "{{ package.dependencies }}"
+    state: present
+    update_cache: true
+    cache_valid_time: 3600
+  when: package.dependencies is defined and package.dependencies | length > 0
+  become: true
+
+- name: "Install Rust package without locked: {{ package.name }}"
   block:
-    - name: "Install Rust package without locked: {{ package }}"
+    - name: "Install Rust package without locked: {{ package.name }}"
       community.general.cargo:
-        name: "{{ package }}"
+        name: "{{ package.name }}"
         locked: false
   rescue:
-    - name: "Retry install with locked: {{ package }}"
+    - name: "Retry install with locked: {{ package.name }}"
       community.general.cargo:
-        name: "{{ package }}"
+        name: "{{ package.name }}"
         locked: true
