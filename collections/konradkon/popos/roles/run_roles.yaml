@@ -4,3 +4,5 @@
   become: false
   roles:
     - rustup
+    - flatpak
+    - brew
