@@ -1,4 +1,4 @@
 alias r := run
 
 run:
-  ansible-playbook run_roles.yaml
+  ansible-playbook run_roles.yaml -K
