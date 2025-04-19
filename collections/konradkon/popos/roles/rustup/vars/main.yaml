@@ -1,6 +1,18 @@
 ---
 rustup_cargo_list:
   - name: alacritty
+    dependencies:
+      - cmake
+      - g++
+      - pkg-config
+      - libfreetype6-dev
+      - libfontconfig1-dev
+      - libxcb-xfixes0-dev
+      - libxkbcommon-dev
+      - python3
+    config:
+      src: alacritty/alacritty.toml
+      dest: '~/.config/alacritty/alacritty.toml'
   - name: atac
   - name: bacon
   - name: bat
@@ -8,6 +20,8 @@ rustup_cargo_list:
   - name: cargo-asm
   - name: cargo-binstall
   - name: cargo-deny
+  - name: cargo-deb
+  - name: cargo-mutants
   - name: cargo-nextest
   - name: cargo-sweep
   - name: cargo-tarpaulin
@@ -17,41 +31,81 @@ rustup_cargo_list:
   - name: coreutils
   - name: cyme
   - name: difftastic
+    dependencies:
+      - gcc
   - name: dotter
   - name: dua-cli
+  - name: eza
   - name: fd-find
+    dependencies:
+      - make
   - name: flamegraph
+    dependencies:
+      - linux-tools-common
+      - linux-tools-generic
   - name: gitui
+    dependencies:
+      - gcc
+      - openssl
+      - perl
+      - python3
   - name: grex
+  - name: heretek
+    dependencies:
+      - gdb
   - name: httm
   - name: hyperfine
   - name: jaq
   - name: jj-cli
+    dependencies:
+      - libssl-dev
+      - openssl
+      - pkg-config
+      - build-essential
   - name: just
   - name: kondo
   - name: ludusavi
+    dependencies:
+      - gcc
+      - cmake
+      - libx11-dev
+      - libxcb-composite0-dev
+      - libfreetype6-dev
+      - libexpat1-dev
+      - libfontconfig1-dev
+      - libgtk-3-dev
   - name: lychee
+    dependencies:
+      - gcc
+      - pkg-config
+      - libc6-dev
+      - libssl-dev
   - name: mdbook
-  - name: mdcat
   - name: monolith
   - name: mprocs
   - name: navi
   - name: netscanner
-  - name: nomino
+  - name: nomino # TODO
   - name: oculante
   - name: onefetch
+    dependencies:
+      - cmake
   - name: oxker
   - name: pastel
   - name: presenterm
+  - name: procs
   - name: rainfrog
   - name: repgrep
+  - name: resvg
   - name: ripgrep
   - name: rusti-cal
   - name: rustypipe-cli
   - name: sqlx-cli
+  - name: samply
   - name: starship
-  - name: tabiew
   - name: taplo-cli
+    dependencies:
+      - libssl-dev
   - name: tealdeer
   - name: television
   - name: termusic-server
@@ -63,7 +117,13 @@ rustup_cargo_list:
   - name: typst-cli
   - name: wild-linker
   - name: xan
-  - name: yazi-cli
-  - name: yazi-fm
+  - name: [yazi-cli, yazi-fm]
+    dependencies:
+      - jq
+      - ffmpeg
+      - 7zip
+      - imagemagick
+      - poppler-utils
+      - wl-clipboard
   - name: zellij
   - name: zoxide

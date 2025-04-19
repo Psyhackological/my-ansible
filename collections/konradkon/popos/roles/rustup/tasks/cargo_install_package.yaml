@@ -13,9 +13,23 @@
     - name: "Install Rust package without locked: {{ package.name }}"
       community.general.cargo:
         name: "{{ package.name }}"
+        version: "{{ package.version | default(omit) }}"
         locked: false
   rescue:
     - name: "Retry install with locked: {{ package.name }}"
       community.general.cargo:
         name: "{{ package.name }}"
+        version: "{{ package.version | default(omit) }}"
         locked: true
+
+- name: Copy optional configuration files when specified
+  ansible.builtin.copy:
+    src: "{{ package.config.src }}"
+    dest: "{{ package.config.dest }}"
+    mode: '0664'
+  when:
+    - package.config is defined
+    - package.config.src is defined
+    - package.config.dest is defined
+    - package.config.src | length > 0
+    - package.config.dest | length > 0
