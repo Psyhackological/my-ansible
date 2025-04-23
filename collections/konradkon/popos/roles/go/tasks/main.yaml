@@ -1,3 +1,72 @@
-#SPDX-License-Identifier: MIT-0
 ---
-# tasks file for go
+- name: Fail if architecture is unsupported
+  ansible.builtin.fail:
+    msg: "Unsupported architecture: {{ ansible_architecture }}"
+  when: go_arch == 'unsupported'
+
+- name: Check if Go is already installed
+  ansible.builtin.command: "{{ go_install_dir }}/go/bin/go version"
+  register: go_current_version
+  changed_when: false
+  failed_when: false
+  check_mode: false
+
+- name: Set fact for current Go version
+  ansible.builtin.set_fact:
+    go_is_installed: "{{ go_current_version.rc == 0 }}"
+    go_current_version_string: "{{ go_current_version.stdout | default('') }}"
+
+- name: Check if installed version matches target version
+  ansible.builtin.set_fact:
+    go_version_matches: "{{ go_is_installed and 'go version go' + go_version + ' ' in go_current_version_string }}"
+
+- name: Display current Go version
+  ansible.builtin.debug:
+    msg: "Current Go version: {{ go_current_version_string if go_is_installed else 'Not installed' }}"
+
+- name: Skip message if Go is already up to date
+  ansible.builtin.debug:
+    msg: "Go {{ go_version }} is already installed. Skipping installation."
+  when: go_version_matches
+
+- name: Create temporary directory for downloads
+  ansible.builtin.file:
+    path: "/tmp/go-install"
+    state: directory
+    mode: '0755'
+  when: not go_version_matches
+
+- name: Download Go archive
+  ansible.builtin.get_url:
+    url: "{{ go_download_url }}"
+    dest: "/tmp/go-install/go{{ go_version }}.linux-{{ go_arch }}.tar.gz"
+    mode: '0644'
+  when: not go_version_matches
+  notify: Cleanup temporary files
+
+- name: Remove existing Go installation
+  ansible.builtin.file:
+    path: "{{ go_install_dir }}/go"
+    state: absent
+  become: true
+  when: not go_version_matches
+
+- name: Extract Go archive
+  ansible.builtin.unarchive:
+    src: "/tmp/go-install/go{{ go_version }}.linux-{{ go_arch }}.tar.gz"
+    dest: "{{ go_install_dir }}"
+    remote_src: true
+  become: true
+  when: not go_version_matches
+  notify:
+    - Verify Go installation
+    - Reload shell environment
+
+- name: Set up Go environment variables
+  ansible.builtin.copy:
+    dest: "{{ go_path_file }}"
+    content: "export PATH=$PATH:{{ go_install_dir }}/go/bin"
+    mode: '0644'
+  become: true
+  when: not go_version_matches or not (go_path_file is file)
+  notify: Reload shell environment

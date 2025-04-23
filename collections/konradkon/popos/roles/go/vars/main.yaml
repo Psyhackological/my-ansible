@@ -1,3 +1,7 @@
-#SPDX-License-Identifier: MIT-0
 ---
-# vars file for go
+go_version: "1.24.2"
+go_download_base_url: "https://go.dev/dl"
+go_install_dir: "/usr/local"
+go_path_file: "/etc/profile.d/go.sh"
+go_arch: "{{ 'amd64' if ansible_architecture == 'x86_64' else ('arm64' if ansible_architecture == 'aarch64' else 'unsupported') }}"
+go_download_url: "{{ go_download_base_url }}/go{{ go_version }}.linux-{{ go_arch }}.tar.gz"

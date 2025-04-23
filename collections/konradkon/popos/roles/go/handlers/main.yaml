@@ -1,3 +1,24 @@
-#SPDX-License-Identifier: MIT-0
 ---
-# handlers file for go
+- name: Verify Go installation
+  ansible.builtin.command: "{{ go_install_dir }}/go/bin/go version"
+  register: go_version_output
+  changed_when: false
+  listen: "Verify Go installation"
+
+- name: Display Go version
+  ansible.builtin.debug:
+    msg: "Go has been successfully installed: {{ go_version_output.stdout }}"
+  listen: "Verify Go installation"
+
+- name: Reload shell environment
+  ansible.builtin.shell: source {{ go_path_file }}
+  args:
+    executable: /bin/bash
+  changed_when: false
+  listen: "Reload shell environment"
+
+- name: Cleanup temporary files
+  ansible.builtin.file:
+    path: "/tmp/go-install"
+    state: absent
+  listen: "Cleanup temporary files"
