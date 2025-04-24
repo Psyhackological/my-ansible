@@ -1,0 +1,28 @@
+---
+- name: Check if Homebrew binary exists
+  ansible.builtin.stat:
+    path: "{{ homebrew_prefix_path }}/brew"
+  register: homebrew_binary_stat
+
+- name: Determine if Homebrew installation is required
+  ansible.builtin.set_fact:
+    homebrew_install_required: "{{ not homebrew_binary_stat.stat.exists }}"
+
+- name: Download Homebrew installation script
+  ansible.builtin.get_url:
+    url: "{{ homebrew_script_url }}"
+    dest: "{{ homebrew_script_local_path }}"
+    mode: '0755'
+  when: homebrew_install_required
+
+- name: Install Homebrew using installation script
+  ansible.builtin.command: "/bin/bash {{ homebrew_script_local_path }}"
+  args:
+    creates: "{{ homebrew_prefix_path }}/brew"
+  when: homebrew_install_required
+
+- name: Remove Homebrew installation script
+  ansible.builtin.file:
+    path: "{{ homebrew_script_local_path }}"
+    state: absent
+  when: homebrew_install_required

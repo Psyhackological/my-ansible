@@ -1,3 +1,4 @@
-#SPDX-License-Identifier: MIT-0
 ---
-# defaults file for brew
+homebrew_prefix_path: "/home/linuxbrew/.linuxbrew/bin"
+homebrew_script_url: "https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"
+homebrew_script_local_path: "/tmp/homebrew-install.sh"

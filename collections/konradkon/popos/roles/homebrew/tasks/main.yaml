@@ -1,9 +1,6 @@
 ---
-- name: Install desired homebrew packages
-  community.general.homebrew:
-    name: "{{ brew_list }}"
+- name: Ensure Homebrew is installed
+  ansible.builtin.import_tasks: brew_install.yaml
 
-- name: Update homebrew and upgrade all packages
-  community.general.homebrew:
-    update_homebrew: true
-    upgrade_all: true
+- name: Install and update Homebrew packages
+  ansible.builtin.import_tasks: homebrew_install_packages.yaml
