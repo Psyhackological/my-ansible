@@ -1,8 +1,10 @@
 ---
-- name: Install Rust packages using cargo_install role
+- name: Run roles
   hosts: localhost
   become: false
   roles:
+    - uv
     - rustup
     - flatpak
-    - brew
+    - homebrew
+    - go
