@@ -92,6 +92,7 @@ rustup_cargo_list:
       - cmake
   - name: oxker
   - name: pastel
+  - name: pay-respects
   - name: presenterm
   - name: procs
   - name: rainfrog
@@ -113,6 +114,10 @@ rustup_cargo_list:
       - protobuf-compiler
       - libasound2-dev
   - name: tokei
+  - name: topgrade
+    config:
+      src: topgrade/topgrade.toml
+      dest: ~/.config/topgrade/topgrade.toml
   - name: typos-cli
   - name: typst-cli
   - name: wild-linker
@@ -126,4 +131,7 @@ rustup_cargo_list:
       - poppler-utils
       - wl-clipboard
   - name: zellij
+    config:
+      src: zellij/config.kdl
+      dest: '~/.config/zellij/config.kdl'
   - name: zoxide
