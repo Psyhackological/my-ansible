@@ -5,7 +5,6 @@ rustup_cargo_list:
       - cmake
       - g++
       - pkg-config
-      - libfreetype6-dev
       - libfontconfig1-dev
       - libxcb-xfixes0-dev
       - libxkbcommon-dev
@@ -35,6 +34,9 @@ rustup_cargo_list:
       - gcc
   - name: dotter
   - name: dua-cli
+  - name: dysk
+    dependencies:
+      - build-essential
   - name: eza
   - name: fd-find
     dependencies:
@@ -43,6 +45,7 @@ rustup_cargo_list:
     dependencies:
       - linux-tools-common
       - linux-tools-generic
+  - name: feroxbuster
   - name: gitui
     dependencies:
       - gcc
@@ -55,6 +58,7 @@ rustup_cargo_list:
       - gdb
   - name: httm
   - name: hyperfine
+  - name: jnv
   - name: jaq
   - name: jj-cli
     dependencies:
@@ -99,10 +103,15 @@ rustup_cargo_list:
   - name: repgrep
   - name: resvg
   - name: ripgrep
+  - name: rip2
+  - name: riffdiff
+  - name: rustscan
   - name: rusti-cal
   - name: rustypipe-cli
   - name: sqlx-cli
   - name: samply
+  - name: skim
+  - name: scooter
   - name: starship
   - name: taplo-cli
     dependencies:
@@ -122,6 +131,7 @@ rustup_cargo_list:
   - name: typst-cli
   - name: wild-linker
   - name: xan
+  - name: xh
   - name: [yazi-cli, yazi-fm]
     dependencies:
       - jq
