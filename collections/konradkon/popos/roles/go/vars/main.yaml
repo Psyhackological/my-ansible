@@ -1,5 +1,5 @@
 ---
-go_version: "1.24.2"
+go_version: "1.24.5"
 go_download_base_url: "https://go.dev/dl"
 go_install_dir: "/usr/local"
 go_path_file: "/etc/profile.d/go.sh"
